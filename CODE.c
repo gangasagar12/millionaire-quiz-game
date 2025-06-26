@@ -28,3 +28,22 @@ typedef struct {
     int timeout;
     int prize_money;
 } Question;
+
+typedef struct {
+    char name[MAX_NAME_LEN];
+    int winnings;
+    int correct_answers;
+    int lifeline_5050;
+    int lifeline_skip;
+} ScoreEntry;
+
+void save_score(const char* name, int winnings, int correct_answers, int lifeline_5050, int lifeline_skip);
+void show_scoreboard();
+int read_questions(const char* filename, Question** questions);
+void display_question(int qnum, const Question* q, int money, const int lifelines[], int category);
+int handle_answer(const Question* q, char answer, int* money);
+int use_lifeline(Question* q, int* lifelines, int* used_5050, int* used_skip);
+void clear_input_buffer();
+void clear_screen();
+char get_answer_with_timer(int seconds, int* timed_out, int* seconds_taken);
+void show_category_theme(int category);
