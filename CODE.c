@@ -58,3 +58,19 @@ int main() {
         printf("%s\t\t\t 2. Show scoreboard %s \n\n", YELLOW);
         printf("%s \t\t\t 3. Exit game %s \n\n", BLUE, COLOR_END);
         printf("%s \t\t\t Enter your choice (1-3): %s \n\n", BLUE, COLOR_END);
+
+        int choice;
+        scanf("%d", &choice);
+        clear_input_buffer();
+
+        if (choice == 2) {
+            show_scoreboard();
+            printf("%s\t Press Enter to return to menu...%s \n", GREEN, COLOR_END);
+            getchar();
+            clear_screen();
+            continue;
+        }
+        if (choice != 1) {
+            printf("%s\t\t Exiting the game %s\n", AQUA, COLOR_END);
+            return 0;
+        }
