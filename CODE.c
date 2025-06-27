@@ -47,3 +47,14 @@ void clear_input_buffer();
 void clear_screen();
 char get_answer_with_timer(int seconds, int* timed_out, int* seconds_taken);
 void show_category_theme(int category);
+
+int main() {
+    srand((unsigned)time(NULL));  //// Seed random number generator
+    clear_screen();
+
+    while (1) {
+        printf("%s\t\t\t WELCOME  ON THE  QUIZ SHOW %s \n\n", PINK, COLOR_END);
+        printf("%s\t\t\t 1. Play game %s \n\n", AQUA);
+        printf("%s\t\t\t 2. Show scoreboard %s \n\n", YELLOW);
+        printf("%s \t\t\t 3. Exit game %s \n\n", BLUE, COLOR_END);
+        printf("%s \t\t\t Enter your choice (1-3): %s \n\n", BLUE, COLOR_END);
