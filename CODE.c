@@ -74,3 +74,13 @@ int main() {
             printf("%s\t\t Exiting the game %s\n", AQUA, COLOR_END);
             return 0;
         }
+        
+        char player_name[MAX_NAME_LEN];
+        printf("%s\t\t\tEnter your name: %s \n", AQUA, COLOR_END);
+        fgets(player_name, MAX_NAME_LEN, stdin);
+        player_name[strcspn(player_name, "\n")] = 0;  // remove the newline
+
+        printf("%s\t\t\t Choose a category (1-3):%s \n\n", AQUA, COLOR_END);
+        printf("%s\t\t\t 1. Sports questions%s \n\n", BLUE, COLOR_END);
+        printf("%s\t\t\t 2. History questions%s \n\n", YELLOW, COLOR_END);
+        printf("%s\t\t\t 3. Science questions%s \n\n", AQUA, COLOR_END);
