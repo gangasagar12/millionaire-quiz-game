@@ -84,3 +84,18 @@ int main() {
         printf("%s\t\t\t 1. Sports questions%s \n\n", BLUE, COLOR_END);
         printf("%s\t\t\t 2. History questions%s \n\n", YELLOW, COLOR_END);
         printf("%s\t\t\t 3. Science questions%s \n\n", AQUA, COLOR_END);
+int category;
+        scanf("%d", &category);
+        clear_input_buffer();
+        if (category < 1 || category > 3) {
+            printf("%s\t \t Invalid category. Returning to menu...%s\n", RED, COLOR_END);
+            continue;
+        }
+
+        const char* files[] = {"Sports.txt", "History.txt", "Science.txt"};
+        Question* questions = NULL;
+        int question_count = read_questions(files[category - 1], &questions);
+        if (question_count <= 0) {
+            printf("%sFailed to load questions. Returning to menu.%s\n", RED, COLOR_END);
+            continue;
+        }
