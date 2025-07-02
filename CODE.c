@@ -99,3 +99,14 @@ int category;
             printf("%sFailed to load questions. Returning to menu.%s\n", RED, COLOR_END);
             continue;
         }
+        
+        int total_money = 0;
+        int lifelines[] = {1, 1}; // 50-50, Skip
+        int correct_answers = 0;
+        int used_5050 = 0;
+        int used_skip = 0;
+        int i;
+        for (i = 0; i < question_count; i++) {
+            clear_screen();
+            show_category_theme(category);
+            display_question(i + 1, &questions[i], total_money, lifelines, category);
