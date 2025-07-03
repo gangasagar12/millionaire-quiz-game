@@ -125,3 +125,18 @@ int category;
                     printf("%sPress Enter to exit...%s", GREEN, COLOR_END);
                     getchar();
                     return 0;
+                }
+                
+                if (answer == 'L') {
+                    int result = use_lifeline(&questions[i], lifelines, &used_5050, &used_skip);
+                    if (result == 1) {
+                        clear_screen();
+                        show_category_theme(category);
+                        display_question(i + 1, &questions[i], total_money, lifelines, category);
+                        Beep(800, 120);
+                    } else if (result == 0) {  // skip lifeline , move to next question
+                        answered = 1;
+                        break;
+                    }
+                    continue;
+                }
