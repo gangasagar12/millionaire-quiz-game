@@ -110,3 +110,18 @@ int category;
             clear_screen();
             show_category_theme(category);
             display_question(i + 1, &questions[i], total_money, lifelines, category);
+            char answer = 0;
+            int answered = 0, timed_out = 0, seconds_taken = 0;
+
+            while (!answered) {   //  wait for answer
+                answer = get_answer_with_timer(questions[i].timeout, &timed_out, &seconds_taken);   // get answer with timer
+
+                if (timed_out) {
+                    printf("%sTime's up! The correct answer was %c.%s\n", YELLOW, questions[i].correct_option, COLOR_END);
+                    printf("%sFinal winnings: Rs %d%s\n", RED, total_money, COLOR_END);
+                    Beep(600, 350);
+                    save_score(player_name, total_money, correct_answers, used_5050, used_skip);
+                    free(questions);
+                    printf("%sPress Enter to exit...%s", GREEN, COLOR_END);
+                    getchar();
+                    return 0;
