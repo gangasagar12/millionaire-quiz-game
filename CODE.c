@@ -140,3 +140,17 @@ int category;
                     }
                     continue;
                 }
+                if (answer >= 'A' && answer <= 'D') {
+                    int correct = handle_answer(&questions[i], answer, &total_money);
+                    if (correct) {
+                        correct_answers++;
+                        Beep(1200, 170);
+                    } else {
+                        Beep(350, 250);
+                        printf("%sGame Over! Final winnings: Rs %d%s\n", RED, total_money, COLOR_END);
+                        save_score(player_name, total_money, correct_answers, used_5050, used_skip);
+                        free(questions);
+                        printf("%sPress Enter to exit...%s", GREEN, COLOR_END);
+                        getchar();
+                        return 0;
+                    }
