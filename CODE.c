@@ -154,3 +154,11 @@ int category;
                         getchar();
                         return 0;
                     }
+                    answered = 1;
+                } else {
+                    printf("%sInvalid choice. Please enter A-D or L.%s\n", RED, COLOR_END);
+                }
+            }
+            printf("%sPress Enter to continue...%s", GREEN, COLOR_END);
+            clear_input_buffer();
+        }
