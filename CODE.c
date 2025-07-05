@@ -162,3 +162,12 @@ int category;
             printf("%sPress Enter to continue...%s", GREEN, COLOR_END);
             clear_input_buffer();
         }
+printf("%sCongratulations, %s! You answered all questions!\nTotal winnings: Rs %d%s\n", BLUE, player_name, total_money, COLOR_END);
+        save_score(player_name, total_money, correct_answers, used_5050, used_skip);  // save final score
+        free(questions);
+        printf("%sPress Enter to exit...%s", GREEN, COLOR_END);
+        getchar();
+        return 0;
+    }
+    return 0;
+}
