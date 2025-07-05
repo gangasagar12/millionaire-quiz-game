@@ -171,3 +171,20 @@ printf("%sCongratulations, %s! You answered all questions!\nTotal winnings: Rs %
     }
     return 0;
 }
+void save_score(const char* name, int winnings, int correct_answers, int lifeline_5050, int lifeline_skip) {
+    // Read all entries, replace if name matches, otherwise append
+    ScoreEntry entries[MAX_SCORES];
+    int total = 0, found = 0;
+    FILE* file = fopen(SCOREBOARD_FILE, "r");
+    if (file) {
+        while (fscanf(file, "%49[^,],%d,%d,%d,%d\n", entries[total].name, &entries[total].winnings, &entries[total].correct_answers, &entries[total].lifeline_5050, &entries[total].lifeline_skip) == 5 && total < MAX_SCORES) {
+            if (strcmp(entries[total].name, name) == 0) {
+                entries[total].winnings = winnings;
+                entries[total].correct_answers = correct_answers;
+                entries[total].lifeline_5050 = lifeline_5050;
+                entries[total].lifeline_skip = lifeline_skip;
+                found = 1;
+            }
+            total++;
+        }
+        fclose(file);
