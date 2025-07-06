@@ -197,3 +197,19 @@ void save_score(const char* name, int winnings, int correct_answers, int lifelin
         entries[total].lifeline_skip = lifeline_skip;
         total++;
     }
+    int i;
+    file = fopen(SCOREBOARD_FILE, "w");
+    for (i = 0; i < total; i++) {
+        fprintf(file, "%s,%d,%d,%d,%d\n", entries[i].name, entries[i].winnings, entries[i].correct_answers, entries[i].lifeline_5050, entries[i].lifeline_skip);
+    }
+    fclose(file);
+}
+
+void show_scoreboard() {
+    ScoreEntry scores[MAX_SCORES];
+    int total = 0;
+    FILE* file = fopen(SCOREBOARD_FILE, "r");
+    if (!file) {
+        printf("%sNo scores yet!%s\n", YELLOW, COLOR_END);
+        return;
+    }
