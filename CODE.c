@@ -188,3 +188,12 @@ void save_score(const char* name, int winnings, int correct_answers, int lifelin
             total++;
         }
         fclose(file);
+        }
+    if (!found && total < MAX_SCORES) {  // new entry if not found
+        strncpy(entries[total].name, name, MAX_NAME_LEN);
+        entries[total].winnings = winnings;
+        entries[total].correct_answers = correct_answers;
+        entries[total].lifeline_5050 = lifeline_5050;
+        entries[total].lifeline_skip = lifeline_skip;
+        total++;
+    }
