@@ -213,3 +213,13 @@ void show_scoreboard() {
         printf("%sNo scores yet!%s\n", YELLOW, COLOR_END);
         return;
     }
+ while (fscanf(file, "%49[^,],%d,%d,%d,%d\n", scores[total].name, &scores[total].winnings, &scores[total].correct_answers, &scores[total].lifeline_5050, &scores[total].lifeline_skip) == 5 && total < MAX_SCORES) {
+        total++;
+    }
+    fclose(file);
+
+    // Sort by winnings (descending)
+    int i,j;
+    for (i = 0; i < total - 1; i++) {
+        for (j = i + 1; j < total; j++) {
+            if (scores[j].winnings > scores[i].winnings) {
