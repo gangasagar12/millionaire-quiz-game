@@ -223,3 +223,13 @@ void show_scoreboard() {
     for (i = 0; i < total - 1; i++) {
         for (j = i + 1; j < total; j++) {
             if (scores[j].winnings > scores[i].winnings) {
+                ScoreEntry temp = scores[i];
+                scores[i] = scores[j];
+                scores[j] = temp;
+            }
+        }
+    }
+
+    printf("\n========== PLAYER SCOREBOARD ==========\n");
+    printf("%-20s %-10s %-17s %-15s %-15s\n", "Name", "Winnings", "Correct Answers", "50-50 Used", "Skip Used");
+    printf("===================================================================================\n");
