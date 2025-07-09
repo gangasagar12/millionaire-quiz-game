@@ -233,3 +233,15 @@ void show_scoreboard() {
     printf("\n========== PLAYER SCOREBOARD ==========\n");
     printf("%-20s %-10s %-17s %-15s %-15s\n", "Name", "Winnings", "Correct Answers", "50-50 Used", "Skip Used");
     printf("===================================================================================\n");
+    for (i = 0; i < total && i < 10; i++) {
+        printf("%-20s Rs %-8d %-17d %-15s %-15s\n",
+            scores[i].name,
+            scores[i].winnings,
+            scores[i].correct_answers,
+            scores[i].lifeline_5050 > 0 ? "Yes" : "No",
+            scores[i].lifeline_skip > 0 ? "Yes" : "No"
+        );
+    }
+    if (total == 0) {
+        printf("%-20s %-10s\n", "No scores", "yet!");
+    }
