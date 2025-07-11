@@ -245,3 +245,12 @@ void show_scoreboard() {
     if (total == 0) {
         printf("%-20s %-10s\n", "No scores", "yet!");
     }
+    printf("===================================================================================\n\n");
+}
+
+int read_questions(const char* filename, Question** questions) {
+    FILE* file = fopen(filename, "r");
+    if (file == NULL) {
+        printf("%sCould not load file.%s\n", RED, COLOR_END);
+        return 0;
+    }
