@@ -265,3 +265,11 @@ int read_questions(const char* filename, Question** questions) {
         printf("%sMemory allocation failed!%s\n", RED, COLOR_END);
         return 0;
     }
+
+    int i,j;
+    rewind(file);
+    for (i = 0; i < count; i++) {
+        fgets((*questions)[i].text, MAX_QUES_LEN, file);
+        (*questions)[i].text[strcspn((*questions)[i].text, "\n")] = 0;  // remove newline 
+        for (j = 0; j < 4; j++) {
+
