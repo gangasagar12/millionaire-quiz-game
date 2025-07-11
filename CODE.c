@@ -254,3 +254,14 @@ int read_questions(const char* filename, Question** questions) {
         printf("%sCould not load file.%s\n", RED, COLOR_END);
         return 0;
     }
+    char buffer[MAX_QUES_LEN];
+    int lines = 0;
+    while (fgets(buffer, sizeof(buffer), file)) 
+        lines++;
+    int count = lines / 8;
+
+    *questions = malloc(count * sizeof(Question));
+    if (*questions == NULL) {
+        printf("%sMemory allocation failed!%s\n", RED, COLOR_END);
+        return 0;
+    }
