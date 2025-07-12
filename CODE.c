@@ -272,4 +272,15 @@ int read_questions(const char* filename, Question** questions) {
         fgets((*questions)[i].text, MAX_QUES_LEN, file);
         (*questions)[i].text[strcspn((*questions)[i].text, "\n")] = 0;  // remove newline 
         for (j = 0; j < 4; j++) {
+            fgets((*questions)[i].options[j], MAX_OPTION_LEN, file);
+            (*questions)[i].options[j][strcspn((*questions)[i].options[j], "\n")] = 0;
+        }
+        char correct[10], timeout[10], prize[20];
+        fgets(correct, sizeof(correct), file);
+        (*questions)[i].correct_option = toupper(correct[0]);
+        fgets(timeout, sizeof(timeout), file);
+        (*questions)[i].timeout = atoi(timeout);
+        fgets(prize, sizeof(prize), file);
+        (*questions)[i].prize_money = atoi(prize);
+
 
