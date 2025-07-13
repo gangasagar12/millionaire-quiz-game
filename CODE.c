@@ -282,5 +282,18 @@ int read_questions(const char* filename, Question** questions) {
         (*questions)[i].timeout = atoi(timeout);
         fgets(prize, sizeof(prize), file);
         (*questions)[i].prize_money = atoi(prize);
+    }
+        fclose(file);
+    return count;  // number of questions loaded
+}
+
+void display_question(int qnum, const Question* q, int money, const int lifelines[], int category) {
+    int i;
+    const char* theme_color = AQUA;
+    if (category == 1) theme_color = BLUE;
+    else if (category == 2) theme_color = YELLOW;
+    else if (category == 3) theme_color = GREEN;
+
+
 
 
