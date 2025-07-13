@@ -293,6 +293,20 @@ void display_question(int qnum, const Question* q, int money, const int lifeline
     if (category == 1) theme_color = BLUE;
     else if (category == 2) theme_color = YELLOW;
     else if (category == 3) theme_color = GREEN;
+printf("%s------------- Question %d -------------\n", theme_color, qnum);
+    printf("%sPrize: Rs %d\n", GREEN, q->prize_money);
+    printf("%sCurrent winnings: Rs %d\n", BLUE, money);
+    printf("%sLifelines: 50-50 (%s) | Skip (%s)\n", PINK,
+           lifelines[0] ? "available" : "used",
+           lifelines[1] ? "available" : "used");
+    printf("%sTimer: %d seconds\n", AQUA, q->timeout);
+    printf("\n%s%s\n", theme_color, q->text);
+    for (i = 0; i < 4; i++) {
+        if (q->options[i][0] != '\0') {
+            printf("%c) %s\n", 'A' + i, q->options[i]);
+        }
+    }
+}
 
 
 
