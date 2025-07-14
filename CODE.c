@@ -307,6 +307,15 @@ printf("%s------------- Question %d -------------\n", theme_color, qnum);
         }
     }
 }
+int handle_answer(const Question* q, char answer, int* money) {
+    if (answer == q->correct_option) {
+        *money += q->prize_money;
+        return 1;
+    } else {
+        printf("%sWrong! Correct answer was %c%s\n", RED, q->correct_option, COLOR_END);
+        return 0;
+    }
+}
 
 
 
