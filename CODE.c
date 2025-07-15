@@ -316,7 +316,21 @@ int handle_answer(const Question* q, char answer, int* money) {
         return 0;
     }
 }
+int use_lifeline(Question* q, int* lifelines, int* used_5050, int* used_skip) {
+    printf("%sAvailable lifelines:%s\n", BLUE, COLOR_END);
+    if (lifelines[0]) printf("1) 50-50\n");
+    if (lifelines[1]) printf("2) Skip Question\n");
+    printf("0) Cancel\nChoose: ");
 
+    char choice;
+    scanf(" %c", &choice);
+    clear_input_buffer();
 
+    switch (choice) {
+        case '1':
+            if (!lifelines[0]) {
+                printf("%s50-50 already used!%s\n", RED, COLOR_END);
+                return 2;
+            }
 
 
