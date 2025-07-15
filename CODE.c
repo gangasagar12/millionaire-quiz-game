@@ -332,5 +332,19 @@ int use_lifeline(Question* q, int* lifelines, int* used_5050, int* used_skip) {
                 printf("%s50-50 already used!%s\n", RED, COLOR_END);
                 return 2;
             }
+              lifelines[0] = 0;
+            (*used_5050)++;
+            {
+                int removed = 0;
+                while (removed < 2) {
+                    int idx = rand() % 4;
+                    if (('A' + idx) != q->correct_option && q->options[idx][0] != '\0') {
+                        q->options[idx][0] = '\0';
+                        removed++;
+                    }
+                }
+            }
+            printf("%sTwo incorrect options removed!%s\n", GREEN, COLOR_END);
+            return 1;
 
 
