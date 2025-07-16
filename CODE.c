@@ -346,5 +346,17 @@ int use_lifeline(Question* q, int* lifelines, int* used_5050, int* used_skip) {
             }
             printf("%sTwo incorrect options removed!%s\n", GREEN, COLOR_END);
             return 1;
-
+            case '2':
+            if (!lifelines[1]) {
+                printf("%sSkip already used!%s\n", RED, COLOR_END);
+                return 2;
+            }
+            lifelines[1] = 0;
+            (*used_skip)++;
+            printf("%sQuestion skipped!%s\n", YELLOW, COLOR_END);
+            return 0;
+        default:
+            return 2;
+    }
+}
 
