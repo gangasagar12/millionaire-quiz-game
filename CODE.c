@@ -360,3 +360,12 @@ int use_lifeline(Question* q, int* lifelines, int* used_5050, int* used_skip) {
     }
 }
 
+void clear_input_buffer() {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
+}
+
+void clear_screen() {
+    system("cls");
+}
+
