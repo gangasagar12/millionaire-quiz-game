@@ -368,4 +368,15 @@ void clear_input_buffer() {
 void clear_screen() {
     system("cls");
 }
+char get_answer_with_timer(int seconds, int* timed_out, int* seconds_taken) {
+    *timed_out = 0;
+    int barWidth = 20;
 
+    for (int i = seconds; i >= 0; i--) {
+        float progress = (float)i / seconds;
+        int pos = (int)(progress * barWidth);
+        const char* bar_color = (i <= 3) ? RED : (i <= 7 ? YELLOW : AQUA);
+        printf("\r%sTime left (%ds): [", bar_color, i);
+        for (int j = 0; j < barWidth; j++) {
+            printf(j < pos ? "#" : " ");
+        }
