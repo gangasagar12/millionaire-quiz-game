@@ -380,3 +380,20 @@ char get_answer_with_timer(int seconds, int* timed_out, int* seconds_taken) {
         for (int j = 0; j < barWidth; j++) {
             printf(j < pos ? "#" : " ");
         }
+        printf("]%s | Your answer (A-D, L for lifeline): %s", COLOR_END, COLOR_END);
+        fflush(stdout);
+
+        Beep(700, 60);
+
+        DWORD start = GetTickCount();
+        while (GetTickCount() - start < 1000) {
+            if (_kbhit()) {
+                char c = _getch();
+                c = toupper(c);
+                *seconds_taken = seconds - i;
+                printf("%c\n", c);
+                return c;
+            }
+            Sleep(50);
+        }
+    }
