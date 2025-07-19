@@ -397,3 +397,18 @@ char get_answer_with_timer(int seconds, int* timed_out, int* seconds_taken) {
             Sleep(50);
         }
     }
+     printf("%s\n\u23F0 Time's up!%s\n", RED, COLOR_END);
+    *timed_out = 1;
+    *seconds_taken = seconds;
+    return '\0';
+}
+
+void show_category_theme(int category) {
+    if (category == 1) {
+        printf("%s \t\t SPORTS ROUND   %s\n", BLUE, COLOR_END);
+    } else if (category == 2) {
+        printf("%s\t\t HISTORY ROUND  %s\n", YELLOW, COLOR_END);
+    } else if (category == 3 ) {
+        printf("%s\t\t SCIENCE ROUND  %s\n", GREEN, COLOR_END);
+    }
+}
