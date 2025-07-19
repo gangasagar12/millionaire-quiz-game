@@ -65,7 +65,13 @@ int add_user(const char* username, const char* password);  // Add new user to fi
 int main() {
     srand((unsigned)time(NULL));  //// Seed random number generator
     clear_screen();
-
+    // load users form the file at startup
+    load_users();
+    char player_name[MAX_NAME_LEN];
+    if(!login_prompt(player_name)){
+        printf("%s\t\t\t Login failed. Exiting... %s\n", RED, COLOR_END);
+        return 1;
+    }
     while (1) {
         printf("%s\t\t\t WELCOME  ON THE  QUIZ SHOW %s \n\n", PINK, COLOR_END);
         printf("%s\t\t\t 1. Play game %s \n\n", AQUA);
@@ -89,16 +95,12 @@ int main() {
             return 0;
         }
         
-        char player_name[MAX_NAME_LEN];
-        printf("%s\t\t\tEnter your name: %s \n", AQUA, COLOR_END);
-        fgets(player_name, MAX_NAME_LEN, stdin);
-        player_name[strcspn(player_name, "\n")] = 0;  // remove the newline
-
+       
         printf("%s\t\t\t Choose a category (1-3):%s \n\n", AQUA, COLOR_END);
         printf("%s\t\t\t 1. Sports questions%s \n\n", BLUE, COLOR_END);
         printf("%s\t\t\t 2. History questions%s \n\n", YELLOW, COLOR_END);
         printf("%s\t\t\t 3. Science questions%s \n\n", AQUA, COLOR_END);
-int category;
+        int category;
         scanf("%d", &category);
         clear_input_buffer();
         if (category < 1 || category > 3) {
@@ -185,6 +187,19 @@ printf("%sCongratulations, %s! You answered all questions!\nTotal winnings: Rs %
     }
     return 0;
 }
+
+// Load users from file
+void load_users() {
+    FILE* file = fopen(USERS_FILE, "r");
+    user_count = 0;
+    if (!file) return; // No users yet
+    while (fscanf(file, "%49[^,],%49[^\n]\n", users[user_count].username, users[user_count].password) == 2) {
+        user_count++;
+        if (user_count >= MAX_USERS) break;
+    }
+    fclose(file);
+}
+
 void save_score(const char* name, int winnings, int correct_answers, int lifeline_5050, int lifeline_skip) {
     // Read all entries, replace if name matches, otherwise append
     ScoreEntry entries[MAX_SCORES];
