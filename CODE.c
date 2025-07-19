@@ -9,7 +9,9 @@
 #define MAX_QUES_LEN 300
 #define MAX_OPTION_LEN 100
 #define MAX_NAME_LEN 50
+#define MAX_USERS 100
 #define SCOREBOARD_FILE "scoreboard.txt"
+#define USERS_FILE "users.txt"
 #define MAX_SCORES 10
 
 const char* COLOR_END = "\033[0m";
@@ -20,6 +22,12 @@ const char* BLUE = "\033[1;34m";
 const char* PINK = "\033[1;35m";
 const char* AQUA = "\033[1;36m";
 const char* WHITE = "\033[1;37m";
+
+typedef struct  {
+    char username[MAX_NAME_LEN];
+    char password[MAX_NAME_LEN];
+} User;
+
 
 typedef struct {
     char text[MAX_QUES_LEN];
@@ -47,6 +55,12 @@ void clear_input_buffer();
 void clear_screen();
 char get_answer_with_timer(int seconds, int* timed_out, int* seconds_taken);
 void show_category_theme(int category);
+void show_category_theme(int category);
+int login_prompt(char* player_name);  // Prompt user for login
+void load_users();  // Load users from file
+int find_user(const char* username);  // Find user index by username, -1 if not found
+int add_user(const char* username, const char* password);  // Add new user to file
+
 
 int main() {
     srand((unsigned)time(NULL));  //// Seed random number generator
@@ -396,8 +410,7 @@ char get_answer_with_timer(int seconds, int* timed_out, int* seconds_taken) {
             }
             Sleep(50);
         }
-    }
-     printf("%s\n\u23F0 Time's up!%s\n", RED, COLOR_END);
+    } printf("%s\n\u23F0 Time's up!%s\n", RED, COLOR_END);
     *timed_out = 1;
     *seconds_taken = seconds;
     return '\0';
