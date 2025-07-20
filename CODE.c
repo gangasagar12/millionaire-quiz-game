@@ -45,6 +45,10 @@ typedef struct {
     int lifeline_skip;
 } ScoreEntry;
 
+// user management globally
+User users[MAX_USERS];
+int user_count=0;   // total number of users
+
 void save_score(const char* name, int winnings, int correct_answers, int lifeline_5050, int lifeline_skip);
 void show_scoreboard();
 int read_questions(const char* filename, Question** questions);
@@ -199,7 +203,29 @@ void load_users() {
     }
     fclose(file);
 }
+// find the user by username , -1 if not found
+int find_user(const char* username){
+    for (int i=0;i<user_count;i++){
+        if(strcmp(users[i].username,username)==0)
+        return i;
 
+    }
+    return -1;  // not found case
+}
+ // add the user to memory and user.txt file returns 1 on sucess , 0 on fail.
+ int add_user(const char* use3rnme, const char * password){
+    if (user_count>=MAX_USERS)
+    return 0;
+    strncpy(users[user_count].username,username,MAX_NAME_LEN);
+    strncpy(users[user_count].password,password,MAX_NAME_LEN);
+    user_count++;
+    FILE *file =fopen(USERS_FILE,"a");
+    if (!file)
+    return 0;    // file open failed
+    fprintf(file,"%s,%s\n",username,password);
+    fclose(file);
+    return 1;  // user added sucessfully
+ }
 void save_score(const char* name, int winnings, int correct_answers, int lifeline_5050, int lifeline_skip) {
     // Read all entries, replace if name matches, otherwise append
     ScoreEntry entries[MAX_SCORES];
