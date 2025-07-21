@@ -3,8 +3,8 @@
 #include <string.h>
 #include <ctype.h>  // is used to include character handling functions like uppercase lowercase
 #include <time.h>
-#include <windows.h>   // windows api for beep ,sleep, clear screen
-#include <conio.h>  // for getch , kbhit
+#include <windows.h>
+#include <conio.h>  // for getch, kbhit
 
 #define MAX_QUES_LEN 300
 #define MAX_OPTION_LEN 100
@@ -14,20 +14,10 @@
 #define USERS_FILE "users.txt"
 #define MAX_SCORES 10
 
-const char* COLOR_END = "\033[0m";
-const char* RED = "\033[1;31m";
-const char* GREEN = "\033[1;32m";
-const char* YELLOW = "\033[1;33m";
-const char* BLUE = "\033[1;34m";
-const char* PINK = "\033[1;35m";
-const char* AQUA = "\033[1;36m";
-const char* WHITE = "\033[1;37m";
-
-typedef struct  {
+typedef struct {
     char username[MAX_NAME_LEN];
     char password[MAX_NAME_LEN];
 } User;
-
 
 typedef struct {
     char text[MAX_QUES_LEN];
@@ -45,10 +35,21 @@ typedef struct {
     int lifeline_skip;
 } ScoreEntry;
 
-// user management globally
-User users[MAX_USERS];
-int user_count=0;   // total number of users
+// Colors
+const char* COLOR_END = "\033[0m";
+const char* RED = "\033[1;31m";
+const char* GREEN = "\033[1;32m";
+const char* YELLOW = "\033[1;33m";
+const char* BLUE = "\033[1;34m";
+const char* PINK = "\033[1;35m";
+const char* AQUA = "\033[1;36m";
+const char* WHITE = "\033[1;37m";
 
+// User management globals
+User users[MAX_USERS];
+int user_count = 0;
+
+// Function prototypes
 void save_score(const char* name, int winnings, int correct_answers, int lifeline_5050, int lifeline_skip);
 void show_scoreboard();
 int read_questions(const char* filename, Question** questions);
@@ -59,25 +60,26 @@ void clear_input_buffer();
 void clear_screen();
 char get_answer_with_timer(int seconds, int* timed_out, int* seconds_taken);
 void show_category_theme(int category);
-void show_category_theme(int category);
-int login_prompt(char* player_name);  // Prompt user for login
-void load_users();  // Load users from file
-int find_user(const char* username);  // Find user index by username, -1 if not found
-int add_user(const char* username, const char* password);  // Add new user to file
-
+int login_prompt(char* player_name);
+void load_users();
+int find_user(const char* username);
+int add_user(const char* username, const char* password);
 
 int main() {
-    srand((unsigned)time(NULL));  //// Seed random number generator
+    srand((unsigned)time(NULL));
     clear_screen();
-    // load users form the file at startup
+
+    // Load users from file at startup
     load_users();
+
     char player_name[MAX_NAME_LEN];
-    if(!login_prompt(player_name)){
-        printf("%s\t\t\t Login failed. Exiting... %s\n", RED, COLOR_END);
-        return 1;
+    if (!login_prompt(player_name)) {  // login failed
+        printf("%sToo many incorrect attempts. Exiting.%s\n", RED, COLOR_END);
+        return 0;
     }
+
     while (1) {
-        printf("%s\t\t\t WELCOME  ON THE  QUIZ SHOW %s \n\n", PINK, COLOR_END);
+        printf("%s\t\t\t WELCOME ON THE QUIZ SHOW %s \n\n", PINK, COLOR_END);
         printf("%s\t\t\t 1. Play game %s \n\n", AQUA);
         printf("%s\t\t\t 2. Show scoreboard %s \n\n", YELLOW);
         printf("%s \t\t\t 3. Exit game %s \n\n", BLUE, COLOR_END);
@@ -98,12 +100,12 @@ int main() {
             printf("%s\t\t Exiting the game %s\n", AQUA, COLOR_END);
             return 0;
         }
-        
-       
+
         printf("%s\t\t\t Choose a category (1-3):%s \n\n", AQUA, COLOR_END);
         printf("%s\t\t\t 1. Sports questions%s \n\n", BLUE, COLOR_END);
         printf("%s\t\t\t 2. History questions%s \n\n", YELLOW, COLOR_END);
         printf("%s\t\t\t 3. Science questions%s \n\n", AQUA, COLOR_END);
+
         int category;
         scanf("%d", &category);
         clear_input_buffer();
@@ -119,7 +121,7 @@ int main() {
             printf("%sFailed to load questions. Returning to menu.%s\n", RED, COLOR_END);
             continue;
         }
-        
+
         int total_money = 0;
         int lifelines[] = {1, 1}; // 50-50, Skip
         int correct_answers = 0;
@@ -129,12 +131,13 @@ int main() {
         for (i = 0; i < question_count; i++) {
             clear_screen();
             show_category_theme(category);
-            display_question(i + 1, &questions[i], total_money, lifelines, category);
+            display_question(i + 1, &questions[i], total_money, lifelines, category);  // display current question
+
             char answer = 0;
             int answered = 0, timed_out = 0, seconds_taken = 0;
 
-            while (!answered) {   //  wait for answer
-                answer = get_answer_with_timer(questions[i].timeout, &timed_out, &seconds_taken);   // get answer with timer
+            while (!answered) { // loop until question is answered
+                answer = get_answer_with_timer(questions[i].timeout, &timed_out, &seconds_taken);
 
                 if (timed_out) {
                     printf("%sTime's up! The correct answer was %c.%s\n", YELLOW, questions[i].correct_option, COLOR_END);
@@ -146,22 +149,23 @@ int main() {
                     getchar();
                     return 0;
                 }
-                
+
                 if (answer == 'L') {
                     int result = use_lifeline(&questions[i], lifelines, &used_5050, &used_skip);
                     if (result == 1) {
                         clear_screen();
-                        show_category_theme(category);
+                        show_category_theme(category); 
                         display_question(i + 1, &questions[i], total_money, lifelines, category);
                         Beep(800, 120);
-                    } else if (result == 0) {  // skip lifeline , move to next question
+                    } else if (result == 0) {
                         answered = 1;
                         break;
                     }
                     continue;
                 }
+
                 if (answer >= 'A' && answer <= 'D') {
-                    int correct = handle_answer(&questions[i], answer, &total_money);
+                    int correct = handle_answer(&questions[i], answer, &total_money);  // check if answer is correct
                     if (correct) {
                         correct_answers++;
                         Beep(1200, 170);
@@ -182,8 +186,9 @@ int main() {
             printf("%sPress Enter to continue...%s", GREEN, COLOR_END);
             clear_input_buffer();
         }
-printf("%sCongratulations, %s! You answered all questions!\nTotal winnings: Rs %d%s\n", BLUE, player_name, total_money, COLOR_END);
-        save_score(player_name, total_money, correct_answers, used_5050, used_skip);  // save final score
+
+        printf("%sCongratulations, %s! You answered all questions!\nTotal winnings: Rs %d%s\n", BLUE, player_name, total_money, COLOR_END);
+        save_score(player_name, total_money, correct_answers, used_5050, used_skip);
         free(questions);
         printf("%sPress Enter to exit...%s", GREEN, COLOR_END);
         getchar();
@@ -199,110 +204,120 @@ void load_users() {
     if (!file) return; // No users yet
     while (fscanf(file, "%49[^,],%49[^\n]\n", users[user_count].username, users[user_count].password) == 2) {
         user_count++;
-        if (user_count >= MAX_USERS) break;
+        if (user_count >= MAX_USERS) break;  // prevent overflow
     }
     fclose(file);
 }
-// find the user by username , -1 if not found
-int find_user(const char* username){
-    for (int i=0;i<user_count;i++){
-        if(strcmp(users[i].username,username)==0)
-        return i;
 
+// Find user index by username, -1 if not found
+int find_user(const char* username) {
+    for (int i = 0; i < user_count; i++) {
+        if (strcmp(users[i].username, username) == 0)
+            return i;
     }
-    return -1;  // not found case
+    return -1;
 }
- // add the user to memory and user.txt file returns 1 on sucess , 0 on fail.
- int add_user(const char* username, const char * password){
-    if (user_count>=MAX_USERS)
-    return 0;
-    strncpy(users[user_count].username, username ,MAX_NAME_LEN);
-    strncpy(users[user_count].password,password,MAX_NAME_LEN);
+
+// Add user to memory and users.txt file. Returns 1 on success, 0 on fail.
+int add_user(const char* username, const char* password) {
+    if (user_count >= MAX_USERS) return 0;
+    strncpy(users[user_count].username, username, MAX_NAME_LEN);
+    strncpy(users[user_count].password, password, MAX_NAME_LEN);
     user_count++;
-    FILE *file =fopen(USERS_FILE,"a");
-    if (!file)
-    return 0;    // file open failed
-    fprintf(file,"%s,%s\n",username,password);
+    FILE* file = fopen(USERS_FILE, "a");
+    if (!file) return 0;
+    fprintf(file, "%s,%s\n", username, password);
     fclose(file);
-    return 1;  // user added sucessfully
- }
- // multi user login    prompt with registrations
- int login_prompt(char * player_name){
+    return 1;
+}
+
+// Multi-user login prompt with registration
+int login_prompt(char* player_name) {
     char input_name[MAX_NAME_LEN];
     char input_pass[MAX_NAME_LEN];
-    int attempts =0;
-    printf({"%s\t\t\t QUIZ SHOW LOGIN %s\n", PINK, COLOR_END});
-    while(attempts<3){
-        printf("%s enter your username: %s",AQUA,COLOR_END);
-        fgets(input_name,MAX_NAME_LEN,stdin);
-        input_name[strcspn(input_name,"\n")]=0; // remove the newline character
-        int idx=find_user(input_name);
-        if(idx==-1){
-            printf(" %s user not %s found , do you want to register as a new user(yes/no): %s",YELLOW,input_name,COLOR_END);
-            char choice=getchar();
-            clear_input_buffer();   // clear the input buffer
-            if(choice=='yes '|| choice=='YES'){
-                printf("%s Create a new password %s",YELLOW,COLOR_END);
-                int pos=0;
-                 char ch;
-                 memset(input_pass,0,sizeof(input_pass));
-                 while((ch=_getch())!='\r' && pos<sizeof (input_pass)){
-                   if(pos>0){
-                    pos--;
-                    printf("\b \b"); // backspace handling
-                   }
-                 else {
-                    input_pass[pos++]=ch;
-                    printf("*");   // print asterisk for the password security
-                
-                 }
+    int attempts = 0;
+    printf("%s\n\t\t\tQUIZ SYSTEM LOGIN%s\n", YELLOW, COLOR_END);
+    while (attempts < 3) {
+        printf("%sEnter username: %s", BLUE, COLOR_END);
+        fgets(input_name, MAX_NAME_LEN, stdin);
+        input_name[strcspn(input_name, "\n")] = 0;
+
+        int idx = find_user(input_name);
+        if (idx == -1) {
+            printf("%sUsername '%s' not found. Do you want to register as a new user? (Y/N): %s", YELLOW, input_name, COLOR_END);
+            char choice = getchar();
+            clear_input_buffer();
+            if (choice == 'Y' || choice == 'y') {
+                printf("%sCreate a new password: %s", BLUE, COLOR_END);
+                int pos = 0;
+                char ch;
+                memset(input_pass, 0, sizeof(input_pass));
+                while ((ch = _getch()) != '\r' && pos < (int)sizeof(input_pass) - 1) {
+                    if (ch == 8) { // backspace
+                        if (pos > 0) {   // remove last asterisk
+                            pos--;
+                            printf("\b \b");   // remove last asterisk
+                        }
+                    } else {
+                        input_pass[pos++] = ch;   // print asterisk for each character
+                        printf("*");
+                    }
+                }
+                input_pass[pos] = '\0';
+                printf("\n");
+                if (add_user(input_name, input_pass)) {
+                    printf("%sRegistration successful! You can now login with your credentials.%s\n", GREEN, COLOR_END);
+                    Beep(1000, 150);
+                    Sleep(700);
+                    clear_screen();
+                    strncpy(player_name, input_name, MAX_NAME_LEN);
+                    return 1;
+                } else {
+                    printf("%sRegistration failed (max users reached or file error).%s\n", RED, COLOR_END);
+                    return 0;
+                }
+            } else {
+                attempts++;   // increment attempts if user does not want to register
+                printf("%sUser '%s' not found. Please try again.%s\n", RED, input_name, COLOR_END);  // prompt user to try again
+                continue;  
             }
-            input_pass[pos]='\0'; // null terminate the passsword string
+        } else {
+            printf("%sEnter password: %s", BLUE, COLOR_END);
+            int pos = 0;
+            char ch;
+            memset(input_pass, 0, sizeof(input_pass));
+            while ((ch = _getch()) != '\r' && pos < (int)sizeof(input_pass) - 1) {
+                if (ch == 8) { // backspace
+                    if (pos > 0) {
+                        pos--;
+                        printf("\b \b");
+                    }
+                } else {
+                    input_pass[pos++] = ch;
+                    printf("*");
+                }
+            }
+            input_pass[pos] = '\0';
             printf("\n");
-            if(add_user(input_name,input_pass)){
-                printf("\%s Registeration sucessfully you can  now login with your credintials %s\n",GREEN,COLOR_END);
-                BEEP(1000,150);
+            if (strcmp(input_pass, users[idx].password) == 0) {
+                printf("%sAccess granted!%s\n\n", GREEN, COLOR_END);  
+                Beep(1000, 150);
                 Sleep(700);
                 clear_screen();
-                strncpy(player_name,input_name,MAX_NAME_LEN);  //copy the username to player_name
-                return 1 ; // 
-            }else{
-                printf("%s Registration failed : %s\n",RED,COLOR_END);
-                return 0;
-
+                strncpy(player_name, input_name, MAX_NAME_LEN);  // copy username to player_name
+                return 1;
+            } else {
+                printf("%sIncorrect password.%s\n", RED, COLOR_END);
+                Beep(500, 150);
+                attempts++;
             }
-        }else{
-            attempts++;
-            continue;  // user not found , continue to next attempt
         }
-
-    }else{
-        printf("%s enter your password : %s",AQUA,COLOR_END);
-        int pos=0;
-        char ch;
-        memset(input_pass,0,sizeof(input_pass));
-        while((ch=_getch())!='r' && pos<sizeof((int)input_pass)-1){
-            if(ch==8){ // backspace handling
-                if(pos>0){
-                    pos--;
-                    printf("\b \b"); // backspace handling
-                }
-            }else{
-                input_pass[pos++]==ch;
-                printf("*");  // print asterisk for the password security
-            }
-
     }
- }
+    return 0;
+}
 
-
-
-
-
-
- 
+// ----- All other quiz, scoreboard, question, lifeline functions as before -----
 void save_score(const char* name, int winnings, int correct_answers, int lifeline_5050, int lifeline_skip) {
-    // Read all entries, replace if name matches, otherwise append
     ScoreEntry entries[MAX_SCORES];
     int total = 0, found = 0;
     FILE* file = fopen(SCOREBOARD_FILE, "r");
@@ -318,7 +333,7 @@ void save_score(const char* name, int winnings, int correct_answers, int lifelin
             total++;
         }
         fclose(file);
-        }
+    }
     if (!found && total < MAX_SCORES) {  // new entry if not found
         strncpy(entries[total].name, name, MAX_NAME_LEN);
         entries[total].winnings = winnings;
@@ -343,16 +358,15 @@ void show_scoreboard() {
         printf("%sNo scores yet!%s\n", YELLOW, COLOR_END);
         return;
     }
- while (fscanf(file, "%49[^,],%d,%d,%d,%d\n", scores[total].name, &scores[total].winnings, &scores[total].correct_answers, &scores[total].lifeline_5050, &scores[total].lifeline_skip) == 5 && total < MAX_SCORES) {
+    while (fscanf(file, "%49[^,],%d,%d,%d,%d\n", scores[total].name, &scores[total].winnings, &scores[total].correct_answers, &scores[total].lifeline_5050, &scores[total].lifeline_skip) == 5 && total < MAX_SCORES) {
         total++;
     }
     fclose(file);
 
-    // Sort by winnings (descending)
     int i,j;
     for (i = 0; i < total - 1; i++) {
         for (j = i + 1; j < total; j++) {
-            if (scores[j].winnings > scores[i].winnings) {
+            if (scores[j].winnings > scores[i].winnings) {    // sort by winnings descending
                 ScoreEntry temp = scores[i];
                 scores[i] = scores[j];
                 scores[j] = temp;
@@ -386,7 +400,7 @@ int read_questions(const char* filename, Question** questions) {
     }
     char buffer[MAX_QUES_LEN];
     int lines = 0;
-    while (fgets(buffer, sizeof(buffer), file)) 
+    while (fgets(buffer, sizeof(buffer), file))
         lines++;
     int count = lines / 8;
 
@@ -395,12 +409,11 @@ int read_questions(const char* filename, Question** questions) {
         printf("%sMemory allocation failed!%s\n", RED, COLOR_END);
         return 0;
     }
-
     int i,j;
     rewind(file);
     for (i = 0; i < count; i++) {
         fgets((*questions)[i].text, MAX_QUES_LEN, file);
-        (*questions)[i].text[strcspn((*questions)[i].text, "\n")] = 0;  // remove newline 
+        (*questions)[i].text[strcspn((*questions)[i].text, "\n")] = 0;
         for (j = 0; j < 4; j++) {
             fgets((*questions)[i].options[j], MAX_OPTION_LEN, file);
             (*questions)[i].options[j][strcspn((*questions)[i].options[j], "\n")] = 0;
@@ -413,8 +426,8 @@ int read_questions(const char* filename, Question** questions) {
         fgets(prize, sizeof(prize), file);
         (*questions)[i].prize_money = atoi(prize);
     }
-        fclose(file);
-    return count;  // number of questions loaded
+    fclose(file);
+    return count;
 }
 
 void display_question(int qnum, const Question* q, int money, const int lifelines[], int category) {
@@ -423,7 +436,8 @@ void display_question(int qnum, const Question* q, int money, const int lifeline
     if (category == 1) theme_color = BLUE;
     else if (category == 2) theme_color = YELLOW;
     else if (category == 3) theme_color = GREEN;
-printf("%s------------- Question %d -------------\n", theme_color, qnum);
+
+    printf("%s------------- Question %d -------------\n", theme_color, qnum);
     printf("%sPrize: Rs %d\n", GREEN, q->prize_money);
     printf("%sCurrent winnings: Rs %d\n", BLUE, money);
     printf("%sLifelines: 50-50 (%s) | Skip (%s)\n", PINK,
@@ -437,6 +451,7 @@ printf("%s------------- Question %d -------------\n", theme_color, qnum);
         }
     }
 }
+
 int handle_answer(const Question* q, char answer, int* money) {
     if (answer == q->correct_option) {
         *money += q->prize_money;
@@ -446,6 +461,7 @@ int handle_answer(const Question* q, char answer, int* money) {
         return 0;
     }
 }
+
 int use_lifeline(Question* q, int* lifelines, int* used_5050, int* used_skip) {
     printf("%sAvailable lifelines:%s\n", BLUE, COLOR_END);
     if (lifelines[0]) printf("1) 50-50\n");
@@ -462,7 +478,7 @@ int use_lifeline(Question* q, int* lifelines, int* used_5050, int* used_skip) {
                 printf("%s50-50 already used!%s\n", RED, COLOR_END);
                 return 2;
             }
-              lifelines[0] = 0;
+            lifelines[0] = 0;
             (*used_5050)++;
             {
                 int removed = 0;
@@ -476,7 +492,7 @@ int use_lifeline(Question* q, int* lifelines, int* used_5050, int* used_skip) {
             }
             printf("%sTwo incorrect options removed!%s\n", GREEN, COLOR_END);
             return 1;
-            case '2':
+        case '2':
             if (!lifelines[1]) {
                 printf("%sSkip already used!%s\n", RED, COLOR_END);
                 return 2;
@@ -498,6 +514,7 @@ void clear_input_buffer() {
 void clear_screen() {
     system("cls");
 }
+
 char get_answer_with_timer(int seconds, int* timed_out, int* seconds_taken) {
     *timed_out = 0;
     int barWidth = 20;
@@ -526,7 +543,8 @@ char get_answer_with_timer(int seconds, int* timed_out, int* seconds_taken) {
             }
             Sleep(50);
         }
-    } printf("%s\n\u23F0 Time's up!%s\n", RED, COLOR_END);
+    }
+    printf("%s\n\u23F0 Time's up!%s\n", RED, COLOR_END);
     *timed_out = 1;
     *seconds_taken = seconds;
     return '\0';
