@@ -213,10 +213,10 @@ int find_user(const char* username){
     return -1;  // not found case
 }
  // add the user to memory and user.txt file returns 1 on sucess , 0 on fail.
- int add_user(const char* use3rnme, const char * password){
+ int add_user(const char* username, const char * password){
     if (user_count>=MAX_USERS)
     return 0;
-    strncpy(users[user_count].username,username,MAX_NAME_LEN);
+    strncpy(users[user_count].username, username ,MAX_NAME_LEN);
     strncpy(users[user_count].password,password,MAX_NAME_LEN);
     user_count++;
     FILE *file =fopen(USERS_FILE,"a");
@@ -226,6 +226,81 @@ int find_user(const char* username){
     fclose(file);
     return 1;  // user added sucessfully
  }
+ // multi user login    prompt with registrations
+ int login_prompt(char * player_name){
+    char input_name[MAX_NAME_LEN];
+    char input_pass[MAX_NAME_LEN];
+    int attempts =0;
+    printf({"%s\t\t\t QUIZ SHOW LOGIN %s\n", PINK, COLOR_END});
+    while(attempts<3){
+        printf("%s enter your username: %s",AQUA,COLOR_END);
+        fgets(input_name,MAX_NAME_LEN,stdin);
+        input_name[strcspn(input_name,"\n")]=0; // remove the newline character
+        int idx=find_user(input_name);
+        if(idx==-1){
+            printf(" %s user not %s found , do you want to register as a new user(yes/no): %s",YELLOW,input_name,COLOR_END);
+            char choice=getchar();
+            clear_input_buffer();   // clear the input buffer
+            if(choice=='yes '|| choice=='YES'){
+                printf("%s Create a new password %s",YELLOW,COLOR_END);
+                int pos=0;
+                 char ch;
+                 memset(input_pass,0,sizeof(input_pass));
+                 while((ch=_getch())!='\r' && pos<sizeof (input_pass)){
+                   if(pos>0){
+                    pos--;
+                    printf("\b \b"); // backspace handling
+                   }
+                 else {
+                    input_pass[pos++]=ch;
+                    printf("*");   // print asterisk for the password security
+                
+                 }
+            }
+            input_pass[pos]='\0'; // null terminate the passsword string
+            printf("\n");
+            if(add_user(input_name,input_pass)){
+                printf("\%s Registeration sucessfully you can  now login with your credintials %s\n",GREEN,COLOR_END);
+                BEEP(1000,150);
+                Sleep(700);
+                clear_screen();
+                strncpy(player_name,input_name,MAX_NAME_LEN);  //copy the username to player_name
+                return 1 ; // 
+            }else{
+                printf("%s Registration failed : %s\n",RED,COLOR_END);
+                return 0;
+
+            }
+        }else{
+            attempts++;
+            continue;  // user not found , continue to next attempt
+        }
+
+    }else{
+        printf("%s enter your password : %s",AQUA,COLOR_END);
+        int pos=0;
+        char ch;
+        memset(input_pass,0,sizeof(input_pass));
+        while((ch=_getch())!='r' && pos<sizeof((int)input_pass)-1){
+            if(ch==8){ // backspace handling
+                if(pos>0){
+                    pos--;
+                    printf("\b \b"); // backspace handling
+                }
+            }else{
+                input_pass[pos++]==ch;
+                printf("*");  // print asterisk for the password security
+            }
+
+    }
+ }
+
+
+
+
+
+
+ 
 void save_score(const char* name, int winnings, int correct_answers, int lifeline_5050, int lifeline_skip) {
     // Read all entries, replace if name matches, otherwise append
     ScoreEntry entries[MAX_SCORES];
