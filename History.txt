@@ -1,0 +1,400 @@
+1.	Who was the first President of the United States?
+Thomas Jefferson
+George Washington
+Abraham Lincoln
+John Adams
+b
+20
+1000
+2.	What is the capital of Nepal?
+Pokhara
+Lalitpur
+Kathmandu
+Bhaktapur
+c
+20
+2000
+3.	Which continent is the Sahara Desert located on?
+Asia
+Africa
+ Australia
+South America
+b
+20
+4000
+4.	What is the capital of India?
+Mumbai
+New Delhi
+Kolkata
+Chennai
+b
+20
+6000
+5.	Which river is the longest in the world?
+Nile
+Amazon
+Yangtze
+Mississippi
+a
+20
+10000
+6.	What is the largest ocean on Earth?
+Atlantic Ocean
+Indian Ocea
+Arctic Ocean
+Pacific Ocean
+d
+20
+15000
+7.	Who was the famous queen of ancient Egypt?
+Cleopatra
+Nefertiti
+Hatshepsut
+Ramses II
+a
+20
+18000
+8. Which country was formerly known as Persia?
+Iraq
+Iran
+Syria
+Afghanistan
+b
+20
+20000
+9.	Which year did the Titanic sink?
+1905
+1912
+1914
+1898
+b
+20
+25000
+10.	What is the currency of Nepal?
+Rupee
+Dollar
+Pound
+Yen
+a
+20
+30000
+11.	Who was the first emperor of China?
+Confucius
+Qin Shi Huang
+cHan Wudi
+Tang Taizong
+b
+20
+35000
+12.	Which country is home to the Great Barrier Reef?
+New Zealand
+South Africa
+Australia
+Fiji
+c
+20
+40000
+13.	What is the capital of the United Kingdom?
+London
+Edinburgh
+Dublin
+Cardiff
+a
+20
+45000
+14.	Which mountain is the tallest in the world?
+Mount Kilimanjaro
+Mount Everest
+Mount Fuji
+api himal
+b
+20
+50000
+15.	What was the name of the ship that carried the Pilgrims to America in 1620?
+Mayflower
+Nina
+Santa Maria
+ntronia
+a
+20
+55000
+16.	Which empire was known for its road network and aqueducts?
+Ottoman Empire
+Roman Empire
+Mongol Empire
+Persian Empire
+b
+20
+60000
+17.	What is the capital of Nepal's neighboring country, China?
+Shanghai
+Beijing
+Guangzhou
+Hong Kong
+b
+20
+65000
+18.	Who discovered America in 1492
+Marco Polo
+Christopher Columbus
+Ferdinand Magellan
+Vasco da Gama
+b
+20
+75000
+19.	Which river is the longest in South America?
+Amazon River
+Mississippi River
+Yangtze River
+Paraná River
+a
+20
+80000
+20.	What is the capital of Canada?
+Toronto
+Montreal
+Vancouver
+Ottawa
+D
+20
+90000
+21.	Which ancient civilization built the pyramids?
+Roman
+gyptian
+Greek
+south Africa
+b
+20
+100000
+22.	Who was the first man to walk on the Moon?
+Buzz Aldrin
+Neil Armstrong
+John Glenn
+Yuri Gagarin
+B
+20
+110000
+23.	Which country is known as the Land of the Rising Sun?
+China
+Japan
+South Korea
+Vietnam
+B
+20
+130000
+24.	Which is the highest mountain in Nepal?
+Mount Lhotse
+Mount Annapurna
+Mount Kanchenjunga
+Mount Everest
+D
+20
+150000
+25.	Which battle marked the turning point of the American Civil War?
+Battle of Saratoga
+Battle of Gettysburg
+Battle of Antietam
+Battle of Fort Sumter
+B
+20
+170000
+26.	Which US president delivered the Gettysburg Address?
+George Washington
+Abraham Lincoln
+Thomas Jefferson
+Franklin D. Roosevelt
+B
+20
+190000
+27.	What was the main language of the Roman Empire?
+Latin
+Greek
+Italian
+Hebrew
+A
+20
+220000
+28.	Which city is home to the ancient Parthenon?
+Rome
+Athens
+Cairo
+Istanbul
+A
+20
+240000
+29.	Which river flows through Nepal and India, and is considered sacred by Hindus?
+Ganges
+Yamuna
+Brahmaputra
+Koshi
+A
+20
+270000
+30.	Which year did the Berlin Wall fall?
+1987
+1991
+1989
+1990
+C
+20
+300000
+31.	Which civilization built the Great Wall of China?
+Han
+Mongol
+Qin
+Tang
+C
+20
+320000
+32.	What is the currency of Nepal?
+Dollar
+Rupee
+Taka
+Ringgit
+B
+20
+350000
+33.	Who was the first king of unified Nepal?
+King Tribhuvan
+King Prithvi Narayan Shah
+King Birendra
+King Jayaprakash
+B
+20
+400000
+34.	Which continent is the Amazon Rainforest located on?
+Africa
+South America
+Asia
+Australia
+B
+20
+500000
+35.	Which famous structure is located in Paris?
+Colosseum
+Big Ben
+Eiffel Tower
+Pyramids of Giza
+C
+20
+600000
+36.	Which Asian country shares the largest border with Nepal?
+India
+China
+Pakistan
+Bangladesh
+A
+20
+800000
+37.	Which country was the site of the Battle of Waterloo?
+France
+Belgium
+Netherlands
+USA
+B
+20
+1000000
+38.	Who was the first woman to serve as Prime Minister of the United Kingdom?
+Theresa May
+Margaret Thatcher
+Nicola Sturgeon
+Angela Merkel
+B
+20
+2000000
+39.	In which year did Nepal abolish its monarchy and become a republic?
+1991
+2008
+2004
+2010
+B
+20
+400000
+40.	Who was the first woman to fly solo across the Atlantic Ocean?
+Amelia Earhart
+Jacqueline Cochran
+Bessie Coleman
+Sally Ride
+A
+20
+6000000
+41.	Which empire succeeded the Roman Empire in the East?
+Byzantine Empire
+Ottoman Empire
+Holy Roman Empire
+Mongol Empire
+A
+20
+8000000
+42.	Who was the founder of the Mongol Empire?
+Genghis Khan
+Kublai Khan
+Tamerlane
+Alexander the Great
+A
+20
+10000000
+43.	Which of the following is the oldest known civilization in Nepal?
+Lichhavi
+Magar
+Tharu
+Limbu
+A
+20
+11000000
+44.	What is the highest point in Nepal, after Mount Everest?
+Mount Makalu
+Mount Lhotse
+Mount Kanchenjunga
+Mount Annapurna
+B
+20
+12000000
+45.	Which famous trade route connected China to Europe in ancient times?
+Silk Road
+Spice Route
+Incense Route
+Amber Road
+A
+20
+13000000
+46.	Which emperor is known for constructing the Great Wall of China?
+Qin Shi Huang
+Emperor Wu
+Emperor Tang Taizong
+trotor act
+A
+20
+14000000
+47.	Which river is the longest in Nepal?
+Koshi
+Gandaki
+Karnali
+Bagmati
+C
+20
+15000000
+48.	Who was the first woman to climb Mount Everest?
+Junko Tabei
+Pasang Lhamu Sherpa
+Kami Rita Sherpa
+Nawang Sering
+B
+20
+16000000
+49.	What was the capital of the ancient Inca Empire?
+Tenochtitlán
+Machu Picchu
+Cusco
+Lima
+C
+20
+17000000
+50.	Which famous explorer is credited with circumnavigating the globe?
+Christopher Columbus
+Ferdinand Magellan
+Vasco da Gama
+Marco Polo
+B
+20
+18000000
