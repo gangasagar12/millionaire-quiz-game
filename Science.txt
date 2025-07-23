@@ -14,3 +14,67 @@ Saturn
 B
 20
 2000
+3. What is the speed of light in a vacuum?
+Approximately 300,000 kilometres per second
+Approximately 150,000 kilometres per second
+Approximately 450,000 kilometres per second
+Approximately 600,000 kilometres per second
+A
+20
+4000
+4. Who is known as the father of modern physics?
+Albert Einstein
+Isaac Newton
+James Clerk Maxwell
+Nikola Tesla
+b
+20
+6000
+5. Which planet is closest to the sun?
+Venus
+Earth
+Mercury
+Mars
+c
+20
+9000
+6. What is the powerhouse of the cell?
+Nucleus
+Mitochondria
+Ribosome
+Endoplasmic Reticulum
+b
+20
+15000
+7. Which element has the highest melting point?
+Carbon
+Tungsten
+Iron
+Platinum
+b
+20
+20000
+8. What is the most abundant element in the Earth crust?
+Silicon
+Oxygen
+Aluminum
+Iron
+a
+20
+25000
+9. Who invented the first practical telephone?
+Alexander Graham Bell
+Thomas Edison
+Nikola Tesla
+Guglielmo Marconi
+A
+20
+30000
+10. Which programming language is commonly used for artificial intelligence (AI)?
+Python
+C++
+Java
+JavaScript
+a
+20
+35000
