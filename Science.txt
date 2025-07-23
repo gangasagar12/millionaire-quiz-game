@@ -1,0 +1,16 @@
+1. What does DNA stand for?
+Deoxyribonucleic Acid
+Deoxyribose Nucleic Acid
+Dioxyribonucleic Acid
+Dioxyribose Nucleic Acid
+A
+20
+1000
+2.Which planet is known as the Red Planet?
+Venus
+Mars
+Jupiter
+Saturn
+B
+20
+2000
