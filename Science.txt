@@ -78,3 +78,82 @@ JavaScript
 a
 20
 35000
+11. What is the smallest unit of matter?
+Molecule
+Atom
+Proton
+Electron
+B
+20
+40000
+12. Which planet in the solar system has the most moons?
+Jupiter
+Uranus
+Neptune
+Venus
+B
+20
+45000
+13. What is the main function of white blood cells?
+Transport oxygen
+Fight infections
+Regulate body temperature
+Carry nutrients
+B
+20
+50000
+14. What is the chemical formula for table salt?
+NaCl
+H2O
+CO2
+KCl
+A
+20
+60000
+15. What type of energy is produced by moving water?
+Solar energy
+Wind energy
+Hydroelectric energy
+Geothermal energy
+C
+20
+70000
+16. What is the name of the largest organ in the human body?
+Heart
+Liver
+Skin
+Lungs
+C
+80000
+17. Which scientist developed the theory of evolution by natural selection?
+Gregor Mendel
+Charles Darwin
+Louis Pasteur
+Albert Einstein
+B
+20
+90000
+18. What is the chemical formula for water?
+H2O
+O2
+H2O2
+ph2
+A
+20
+100000
+19. What is the primary source of energy for the Sun?
+Nuclear fusion
+Chemical reactions
+Gravitational collapse
+Electrical energy
+A
+20
+200000
+20. Which gas do plants absorb during photosynthesis?
+Oxygen
+Carbon dioxide
+Nitrogen
+Hydrogen
+B
+20
+40000000
