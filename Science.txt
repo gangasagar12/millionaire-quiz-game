@@ -157,3 +157,43 @@ Hydrogen
 B
 20
 40000000
+21. What is the unit of electric current?
+Volt
+Ampere
+Ohm
+Watt
+B
+20
+600000
+22. What is the chemical symbol for gold?
+Au
+Ag
+Pb
+Fe
+A
+20
+800000
+23. Which planet is known as the &quot;Giant Planet&quot;?
+Earth
+Jupiter
+Mars
+Saturn
+B
+20
+1000000
+24. What is the main component of Earth&#39;s atmosphere?
+Oxygen
+Nitrogen
+Carbon dioxide
+Argon
+B
+20
+1500000
+25. What is the chemical formula for methane?
+CH4
+C2H6
+CO2
+C3H8
+A
+20
+2000000
