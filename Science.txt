@@ -197,3 +197,66 @@ C3H8
 A
 20
 2000000
+26. What is the process by which plants make their own food?
+Respiration
+Photosynthesis
+Digestion
+Transpiration
+B
+20
+2500000
+27. Which organ is responsible for pumping blood throughout the body?
+Brain
+Lungs
+Heart
+Kidneys
+C
+20
+3000000
+28. What is the chemical symbol for sodium?
+Na
+S
+So
+Sd
+A
+20
+4000000
+29. What is the SI unit of force?
+Watt
+Newton
+Joulebb
+Pascal
+B
+20
+5000000
+30. Which vitamin is produced when sunlight hits the skin?
+Vitamin A
+Vitamin B
+Vitamin C
+Vitamin D
+D
+20
+5500000
+31. What is the function of chlorophyll in plants?
+Absorb nutrients
+Absorb sunlight
+Produce oxygen
+Transfer water
+B
+20
+6000000
+32. Which of the following is not a noble gas?
+Helium
+Neon
+Oxygen
+Argon
+C
+65000000
+33. Which part of the brain controls voluntary actions?
+Cerebellum
+Cerebrum
+Medulla
+Thalamus
+B
+20
+7000000
