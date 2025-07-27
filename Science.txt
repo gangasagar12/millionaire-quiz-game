@@ -260,3 +260,57 @@ Thalamus
 B
 20
 7000000
+34. Which metal is liquid at room temperature?
+Mercury
+Lead
+Zinc
+jink
+A
+20
+75000000
+35. What kind of lens is used in a magnifying glass?
+Concave
+Convex
+Plano-concave
+Bifocal
+B
+20
+402113
+36. Which particle has no electric charge?
+Proton
+Electron
+Neutron
+Hydroelectric
+C
+501201
+37. Which law explains why airplanes can fly?
+Newton&#39;s Third Law
+Archimedes’ Principle
+Bernoulli&#39;s Principle
+Hooke’s Law
+C
+20
+1000001
+38. What is the half-life of carbon-14?
+5730 years
+1000 years
+700 years
+1 million years
+A
+20
+1500000
+39. Which scientist is associated with the uncertainty principle?
+instein
+Bohr
+Heisenberg
+Schrödinger
+C
+2000000
+40. Which process is responsible for the formation of stars?
+Fusion
+Fission
+Condensation
+Crystallization
+A
+20
+2500000
