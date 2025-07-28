@@ -305,6 +305,7 @@ Bohr
 Heisenberg
 Schrödinger
 C
+20
 2000000
 40. Which process is responsible for the formation of stars?
 Fusion
@@ -314,3 +315,84 @@ Crystallization
 A
 20
 2500000
+41. What type of bond involves sharing of electron pairs?
+Ionic
+Covalent
+Metallic
+Hydrogen
+B
+20
+3000000
+42. What causes auroras (northern lights)?
+Moonlight
+Magnetic storms
+Solar wind interacting with Earth&#39;s magnetic field
+lightning
+C
+20
+3500000
+43. Which is the strongest known material (theoretically)?
+Steel
+Diamond
+Graphene
+Carbon fiber
+C
+20
+4000000
+44. What is Moore&#39;s Law?
+Speed of light is constant
+Heat moves from hot to cold
+Transistor count doubles every two years
+Data loss is inevitable
+C
+20
+5000000
+45. In computer science, what does “HTTP” stand for?
+High Tech Transfer Protocol
+Hyper Transfer Text Protocol
+HyperText Transfer Protocol
+Host Text Transfer Protocol
+C
+20
+7000000
+46. What does CRISPR allow scientists to do?
+Transmit radio signals
+Edit genes
+Compress files
+Control climate
+B
+20
+8000000
+47. Which fundamental force holds the nucleus together?
+Electromagnetic
+Gravitational
+Weak nuclear
+Strong nuclear
+D
+20
+9000000
+48. Which part of the electromagnetic spectrum has the shortest
+Infrared
+Gamma rays
+Ultraviolet
+X-rays
+B
+20
+100000000
+49. Which computer scientist developed the concept of the Turing
+Machine?
+Charles Babbage
+Tim Berners-Lee
+Alan Turing
+John von Neumann
+C
+20
+13000000
+50. What is quantum entanglement?
+Particles repelling each other
+Particles sharing the same space
+Particles remaining connected over distance
+A type of magnetic reaction
+C
+20
+15000000
