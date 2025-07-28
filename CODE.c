@@ -1,23 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <ctype.h>  // is used to include character handling functions like uppercase lowercase
+#include <ctype.h>
 #include <time.h>
 #include <windows.h>
-#include <conio.h>  // for getch, kbhit
+#include <conio.h>
 
 #define MAX_QUES_LEN 300
 #define MAX_OPTION_LEN 100
 #define MAX_NAME_LEN 50
-#define MAX_USERS 100
-#define SCOREBOARD_FILE "scoreboard.txt"
-#define USERS_FILE "users.txt"
 #define MAX_SCORES 10
-
-typedef struct {
-    char username[MAX_NAME_LEN];
-    char password[MAX_NAME_LEN];
-} User;
+#define SCOREBOARD_FILE "scoreboard.txt"
 
 typedef struct {
     char text[MAX_QUES_LEN];
@@ -45,10 +38,6 @@ const char* PINK = "\033[1;35m";
 const char* AQUA = "\033[1;36m";
 const char* WHITE = "\033[1;37m";
 
-// User management globals
-User users[MAX_USERS];
-int user_count = 0;
-
 // Function prototypes
 void save_score(const char* name, int winnings, int correct_answers, int lifeline_5050, int lifeline_skip);
 void show_scoreboard();
@@ -60,28 +49,19 @@ void clear_input_buffer();
 void clear_screen();
 char get_answer_with_timer(int seconds, int* timed_out, int* seconds_taken);
 void show_category_theme(int category);
-int login_prompt(char* player_name);
-void load_users();
-int find_user(const char* username);
-int add_user(const char* username, const char* password);
+void login_prompt(char* player_name);
 
 int main() {
     srand((unsigned)time(NULL));
     clear_screen();
 
-    // Load users from file at startup
-    load_users();
-
     char player_name[MAX_NAME_LEN];
-    if (!login_prompt(player_name)) {  // login failed
-        printf("%sToo many incorrect attempts. Exiting.%s\n", RED, COLOR_END);
-        return 0;
-    }
+    login_prompt(player_name);
 
     while (1) {
         printf("%s\t\t\t WELCOME ON THE QUIZ SHOW %s \n\n", PINK, COLOR_END);
-        printf("%s\t\t\t 1. Play game %s \n\n", AQUA);
-        printf("%s\t\t\t 2. Show scoreboard %s \n\n", YELLOW);
+        printf("%s\t\t\t 1. Play game %s \n\n", AQUA, COLOR_END);
+        printf("%s\t\t\t 2. Show scoreboard %s \n\n", YELLOW, COLOR_END);
         printf("%s \t\t\t 3. Exit game %s \n\n", BLUE, COLOR_END);
         printf("%s \t\t\t Enter your choice (1-3): %s \n\n", BLUE, COLOR_END);
 
@@ -154,7 +134,7 @@ int main() {
                     int result = use_lifeline(&questions[i], lifelines, &used_5050, &used_skip);
                     if (result == 1) {
                         clear_screen();
-                        show_category_theme(category); 
+                        show_category_theme(category);
                         display_question(i + 1, &questions[i], total_money, lifelines, category);
                         Beep(800, 120);
                     } else if (result == 0) {
@@ -197,126 +177,38 @@ int main() {
     return 0;
 }
 
-// Load users from file
-void load_users() {
-    FILE* file = fopen(USERS_FILE, "r");
-    user_count = 0;
-    if (!file) return; // No users yet
-    while (fscanf(file, "%49[^,],%49[^\n]\n", users[user_count].username, users[user_count].password) == 2) {
-        user_count++;
-        if (user_count >= MAX_USERS) break;  // prevent overflow
-    }
-    fclose(file);
-}
-
-// Find user index by username, -1 if not found
-int find_user(const char* username) {
-    for (int i = 0; i < user_count; i++) {
-        if (strcmp(users[i].username, username) == 0)
-            return i;
-    }
-    return -1;
-}
-
-// Add user to memory and users.txt file. Returns 1 on success, 0 on fail.
-int add_user(const char* username, const char* password) {
-    if (user_count >= MAX_USERS) return 0;
-    strncpy(users[user_count].username, username, MAX_NAME_LEN);
-    strncpy(users[user_count].password, password, MAX_NAME_LEN);
-    user_count++;
-    FILE* file = fopen(USERS_FILE, "a");
-    if (!file) return 0;
-    fprintf(file, "%s,%s\n", username, password);
-    fclose(file);
-    return 1;
-}
-
-// Multi-user login prompt with registration
-int login_prompt(char* player_name) {
-    char input_name[MAX_NAME_LEN];
-    char input_pass[MAX_NAME_LEN];
-    int attempts = 0;
+void login_prompt(char* player_name) {
     printf("%s\n\t\t\tQUIZ SYSTEM LOGIN%s\n", YELLOW, COLOR_END);
-    while (attempts < 3) {
-        printf("%sEnter username: %s", BLUE, COLOR_END);
-        fgets(input_name, MAX_NAME_LEN, stdin);
-        input_name[strcspn(input_name, "\n")] = 0;
+    printf("%sEnter your name: %s", BLUE, COLOR_END);
+    fgets(player_name, MAX_NAME_LEN, stdin);
+    player_name[strcspn(player_name, "\n")] = 0;
 
-        int idx = find_user(input_name);
-        if (idx == -1) {
-            printf("%sUsername '%s' not found. Do you want to register as a new user? (Y/N): %s", YELLOW, input_name, COLOR_END);
-            char choice = getchar();
-            clear_input_buffer();
-            if (choice == 'Y' || choice == 'y') {
-                printf("%sCreate a new password: %s", BLUE, COLOR_END);
-                int pos = 0;
-                char ch;
-                memset(input_pass, 0, sizeof(input_pass));
-                while ((ch = _getch()) != '\r' && pos < (int)sizeof(input_pass) - 1) {
-                    if (ch == 8) { // backspace
-                        if (pos > 0) {   // remove last asterisk
-                            pos--;
-                            printf("\b \b");   // remove last asterisk
-                        }
-                    } else {
-                        input_pass[pos++] = ch;   // print asterisk for each character
-                        printf("*");
-                    }
-                }
-                input_pass[pos] = '\0';
-                printf("\n");
-                if (add_user(input_name, input_pass)) {
-                    printf("%sRegistration successful! You can now login with your credentials.%s\n", GREEN, COLOR_END);
-                    Beep(1000, 150);
-                    Sleep(700);
-                    clear_screen();
-                    strncpy(player_name, input_name, MAX_NAME_LEN);
-                    return 1;
-                } else {
-                    printf("%sRegistration failed (max users reached or file error).%s\n", RED, COLOR_END);
-                    return 0;
-                }
-            } else {
-                attempts++;   // increment attempts if user does not want to register
-                printf("%sUser '%s' not found. Please try again.%s\n", RED, input_name, COLOR_END);  // prompt user to try again
-                continue;  
+    char dummy_pass[MAX_NAME_LEN];
+    printf("%sEnter your password: %s", BLUE, COLOR_END);
+    int pos = 0;
+    char ch;
+    memset(dummy_pass, 0, sizeof(dummy_pass));
+    while ((ch = _getch()) != '\r' && pos < (int)sizeof(dummy_pass) - 1) {
+        if (ch == 8) { // backspace
+            if (pos > 0) {
+                pos--;
+                printf("\b \b");
             }
         } else {
-            printf("%sEnter password: %s", BLUE, COLOR_END);
-            int pos = 0;
-            char ch;
-            memset(input_pass, 0, sizeof(input_pass));
-            while ((ch = _getch()) != '\r' && pos < (int)sizeof(input_pass) - 1) {
-                if (ch == 8) { // backspace
-                    if (pos > 0) {
-                        pos--;
-                        printf("\b \b");
-                    }
-                } else {
-                    input_pass[pos++] = ch;
-                    printf("*");
-                }
-            }
-            input_pass[pos] = '\0';
-            printf("\n");
-            if (strcmp(input_pass, users[idx].password) == 0) {
-                printf("%sAccess granted!%s\n\n", GREEN, COLOR_END);  
-                Beep(1000, 150);
-                Sleep(700);
-                clear_screen();
-                strncpy(player_name, input_name, MAX_NAME_LEN);  // copy username to player_name
-                return 1;
-            } else {
-                printf("%sIncorrect password.%s\n", RED, COLOR_END);
-                Beep(500, 150);
-                attempts++;
-            }
+            dummy_pass[pos++] = ch;
+            printf("*");
         }
     }
-    return 0;
+    dummy_pass[pos] = '\0';
+    printf("\n");
+    printf("%sAccess granted!%s\n\n", GREEN, COLOR_END);
+    Beep(1000, 150);
+    Sleep(700);
+    clear_screen();
 }
 
-// ----- All other quiz, scoreboard, question, lifeline functions as before -----
+// ----------- All other quiz, scoreboard, question, lifeline functions as before -----------
+
 void save_score(const char* name, int winnings, int correct_answers, int lifeline_5050, int lifeline_skip) {
     ScoreEntry entries[MAX_SCORES];
     int total = 0, found = 0;
@@ -363,7 +255,7 @@ void show_scoreboard() {
     }
     fclose(file);
 
-    int i,j;
+    int i, j;
     for (i = 0; i < total - 1; i++) {
         for (j = i + 1; j < total; j++) {
             if (scores[j].winnings > scores[i].winnings) {    // sort by winnings descending
@@ -409,7 +301,7 @@ int read_questions(const char* filename, Question** questions) {
         printf("%sMemory allocation failed!%s\n", RED, COLOR_END);
         return 0;
     }
-    int i,j;
+    int i, j;
     rewind(file);
     for (i = 0; i < count; i++) {
         fgets((*questions)[i].text, MAX_QUES_LEN, file);
