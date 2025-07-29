@@ -1,0 +1,120 @@
+1. Who won the 2018 FIFA World Cup?
+Brazil
+France
+Germany
+Argentina
+B
+20
+1000
+2. Which sport is played with a round ball and goalposts?
+Football
+Volleyball
+Cricket
+Baseball
+A
+20
+3000
+3.What is the maximum number of players allowed on a football team on the field at one time?
+9
+11
+7
+13
+B
+20
+5000
+4.	In cricket, what is the term for the area where the bowler delivers the ball?
+Crease
+Wicket
+Pitch
+Boundary
+c
+20
+8000
+5.	Who is known as the "King of Football"?
+pele
+Lionel Messi
+Cristiano Ronaldo
+Diego Maradona
+a
+20
+15000
+6.In volleyball, how many players are on each team on the court at one time?
+5
+6
+7
+8
+B
+20
+20000
+7.	Which country won the 2019 ICC Cricket World Cup?
+India
+Australia
+England
+Pakistan
+B
+20
+25000
+8.	What is the term for a score of 3 points in volleyball?
+Tripple
+Hat-trick
+Treble
+Triple
+B
+20
+30000
+9.	Which of the following is not a position in football?
+Quarterback
+Goalkeeper
+Midfielder
+Setter
+D
+20
+40000
+10.	In cricket, who holds the record for the most runs scored in a single match?
+Ricky Ponting
+Brian Lara
+Virat Kohli
+Sachin Tendulkar
+B
+20
+50000
+11.	In football, what is the penalty for a foul inside the penalty box?
+Corner kick
+Direct free kick
+Indirect free kick
+Penalty kick
+D
+10
+60000
+12.	Which of the following is not a type of volleyball serve?
+Underhand
+Overhead
+Sidearm
+Backhand
+D
+20
+70000
+13.	What is the maximum number of overs a team can bowl in a T20 cricket match?
+20
+15
+25
+30
+A
+20
+800000
+14.	In football, which country won the first-ever FIFA World Cup in 1930?
+Brazil
+Argentina
+Uruguay
+Italy
+C
+20
+90000
+15.	What is the term used for hitting the ball over the net in volleyball without the opponent touching it?
+Serve
+Block
+Spike
+Dig
+C
+20
+100000
