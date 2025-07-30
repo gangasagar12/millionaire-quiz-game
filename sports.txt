@@ -118,3 +118,123 @@ Dig
 C
 20
 100000
+16.	In cricket, how many balls are there in a single over?
+5
+6
+7
+9
+B
+20
+120000
+17.	Which football club has won the most UEFA Champions League titles?
+Barcelona
+Real Madrid
+Manchester United
+Bayern Munich
+B
+20
+140000
+18.	What is the minimum number of points required to win a set in volleyball?
+15
+20
+25
+30
+c
+20
+160000
+19.	Who holds the record for the most goals in a single FIFA World Cup?
+Pelé
+Miroslav Klose
+Ronaldo
+ionel Messi
+B
+20
+180000
+20.	Which country has the most Cricket World Cup titles?
+Australia
+India
+West Indies
+Pakistan
+A
+20
+200000
+21.	What is the maximum number of sets in a professional volleyball match?
+3
+4
+5
+6
+c
+20
+240000
+22.	In football, what does the term "hat-trick" refer to?
+A player who scores one goal
+A player who scores three goals in a match
+A player who assists three goals
+A defensive play
+B
+20
+280000
+23.	Which cricket player is known as the "Master Blaster"?
+Brian Lara
+Ricky Ponting
+Sachin Tendulkar
+Virat Kohli
+c
+20
+320000
+24.	Which country won the 2022 FIFA World Cup?
+Argentina
+France
+Brazil
+Spain
+a
+20
+400000
+25	In volleyball, how many points does a team need to win a set?
+20
+21
+25
+30
+c
+20
+500000
+26.	Which of the following is the longest format of cricket?
+T20
+One Day International
+Test
+odi
+C
+20
+600000
+27.	What is the term used for a serve that the opponent cannot touch in volleyball?
+Kill
+Ace
+Block
+Dig
+B
+20
+800000
+28.	Who won the 2017 ICC Champions Trophy in cricket?
+India
+Pakistan
+Australia
+England
+B
+20
+1000000
+29.	What is the name of the prestigious football tournament held every four years?
+UEFA Cup
+Copa América
+FIFA World Cup
+Copa del Rey
+C
+20
+1500000
+30.	In football, what is the term for a free kick awarded for a minor foul?
+Direct free kick
+Indirect free kick
+Penalty kick
+out of kick
+A
+20
+2000000
