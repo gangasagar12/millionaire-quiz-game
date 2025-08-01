@@ -238,3 +238,163 @@ out of kick
 A
 20
 2000000
+31.	Which country was the first to host the FIFA World Cup?
+Italy
+Uruguay
+Brazil
+France
+B
+20
+3000000
+32.	What is the name of the cricket competition between England and Australia?
+ICC World Cup
+Ashes
+IPL
+Champions Trophy
+B
+20
+4000000
+33.	Which country is the most successful in the Olympic Games in volleyball?
+Italy
+Brazil
+Russia
+USA
+B
+20
+500000
+34.	In football, which of the following players has won the most Ballon d'Or awards?
+Lionel Messi
+Cristiano Ronaldo
+Pelé
+Michel Platini
+a
+20
+5500000
+35.	In cricket, who has the record for the most Test wickets?
+Shane Warne
+Muttiah Muralitharan
+Wasim Akram
+Rohit sharma
+B
+20
+6000000
+36.	Which football player holds the record for most appearances in the Premier League?
+Ryan Giggs
+Frank Lampard
+Steven Gerrard
+Gareth Barry
+D
+20
+6500000
+37.	What is the maximum number of players allowed in a football team's squad for the Premier League?
+22
+25
+30
+35
+B
+20
+7000000
+38.	In cricket, which player scored the fastest century in a One Day International?
+Brian Lara
+Virat Kohli
+Shahid Afridi
+AB de Villiers
+D
+20
+7500000
+39.	Which country won the first Rugby World Cup?
+South Africa
+New Zealand
+England
+Nepal
+B
+20
+8000000
+40.	Which football player has scored the most goals in a single World Cup tournament?
+Ronaldo
+Miroslav Klose
+Pelé
+Virat Kohli
+C
+20
+8500000
+41.	What is the fastest delivery ever recorded in cricket?
+161.3 km/h by Shoaib Akhtar
+156.0 km/h by Brett Lee
+154.4 km/h by Shaun Tait
+150.0 km/h by Jofra Archer
+A
+20
+9000000
+42.	Which football club is known as "The Red Devils"?
+Liverpool
+Manchester United
+Arsenal
+helsea
+B
+20
+9500000
+43.	Which country has the most Olympic gold medals in volleyball?
+Soviet Union
+Brazil
+Italy
+USA
+A
+20
+10000000
+44.	In cricket, what is the term used for the dismissal of a batsman without scoring any runs?
+Duck
+Golden duck
+Run out
+LBW
+A
+20
+11000000
+45.	What is the maximum number of players allowed on a volleyball team roster during a tournament?
+8
+12
+14
+15
+B
+20
+12000000
+46.	In football, what is the maximum number of substitutes allowed in a match as of 2024?
+3
+5
+6
+7
+B
+20
+13000000
+47.	Who holds the record for the most goals in the history of the World Cup?
+Pelé
+Ronaldo
+Miroslav Klose
+Thierry Henry
+C
+20
+14000000
+48.	What is the term for a defensive player who prevents the ball from going over the net in volleyball?
+Blocker
+Setter
+Libero
+Outside hitter
+A
+20
+15000000
+49.	Which cricketer has scored the most centuries in Test cricket?
+Ricky Ponting
+Sachin Tendulkar
+Steve Smith
+Jacques Kallis
+B
+20
+16000000
+50. Which country is the birthplace of volleyball?
+USA
+Brazil
+Italy
+Japan
+A
+20
+17000000
